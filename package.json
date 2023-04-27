@@ -1,5 +1,5 @@
 {
-	"name": "emailauth",
+	"name": "email-otp-verify",
 	"version": "1.0.0",
 	"description": "a package witch utility functions to send OTP to emails and verifies them using emailauth-api",
 	"type": "module",
