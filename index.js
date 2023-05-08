@@ -22,6 +22,13 @@ const setOption = (data) => {
 
 const sendOTP = async (data) => {
 	errorHandler(data, "email");
+	if (data.hasOwnProperty("min")) {
+		if (typeof data.min !== "number")
+			throw new Error("Min property value must be a number");
+		else {
+			data = { email: data.email, expiresIn: data.min };
+		}
+	}
 	const response = await fetch(`${URL}/${VERSION}/sendotp`, setOption(data));
 	return await response.json();
 };
@@ -39,5 +46,3 @@ const resendOTP = async (data) => {
 };
 
 export { sendOTP, verifyOTP, resendOTP };
-
-
