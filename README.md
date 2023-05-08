@@ -21,9 +21,12 @@ import { sendOTP, verifyOTP, resendOTP } from "email-otp-verify";
 
 This function sends an OTP code to the email address provided in the data object. The data object must have an email property that contains the email address. The function returns a Promise that resolves with the response including a token which will be required further when verifying OTP and resending OTP.
 
+Optionally, you can also set the expiration time for the OTP by including a min property in the data object. The min property must be a number that represents the number of minutes before the OTP expires. If the min property is included, the function will modify the data object to include the expiresIn property instead, with the value set to the number of seconds until expiration.
+
 ```js
 const data = {
 	email: "example@example.com",
+	min: 5, // optional, sets the OTP expiration time to 5 minutes
 };
 
 sendOTP(data)
